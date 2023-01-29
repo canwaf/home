@@ -10,6 +10,9 @@ about:
     - icon: mastodon
       text: Mastodon
       href: https://dataare.cool/@waf
+    - icon: filetype-pdf
+      text: OpenResume
+      href: _assets/AndrewFergusson_LeadDataScientist_202301.pdf
 ---
 
 Andrew Fergusson is a Lead Data Scientist at Office for National Statistics. When he's not banging on about metadata making everyone's life easier, he's probably banging the pavement in preparation for the next marathon.

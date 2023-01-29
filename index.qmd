@@ -1,10 +1,10 @@
 ---
-title: "andrew fergusson's roughdata"
+title: "andrew fergusson's website"
 ---
 
 roughdata is a reality experienced by data anlysts, scientists, and engineers. To make our work work, we make assumptions before we get to the fun stuff. We are not perfect, and we're not always right. But all analysis is iterative. We can always go back and fix things to make things better.
 
-We can also have fun with other people's models. I haven't done much of creating generative AI models; however I've had a lot of fun with StableDiffusion and ChatGPT.
+We can also have fun with other people's models. I haven't done much of creating generative AI models; however I've had a lot of fun with StableDiffusion and ChatGPT. I talk about ChatGPT making my life a bit easier on <a rel="me" href="https://dataare.cool/@Waf">Mastodon</a>.
 
 ### ChatGPT by OpenAI fun
 
@@ -54,5 +54,3 @@ Oddly, this one provided more personality than the presiding dean. But bless the
 > Lastly, I would like to say that I am incredibly proud to be the chancellor of the University of Sheffield and I am honored to have had the opportunity to be a part of your journey. You are a testament to the excellence and potential of this institution, and I have no doubt that you will go on to do great things.
 > 
 > Congratulations again on this incredible achievement, and I wish you all the best as you embark on the next chapter of your lives. Thank you.
-
-<a rel="me" href="https://dataare.cool/@Waf">Mastodon</a>

@@ -1,0 +1,28 @@
+project:
+  type: website
+  output-dir: rendered
+
+website:
+  title: "roughdata"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: blog/index.qmd
+        text: Blog
+      - href: about.qmd
+        text: About
+  search:
+    location: navbar
+    type: textbox
+
+
+format:
+  html:
+    theme: united
+    css: styles.css
+    toc: true
+
+execute:
+  freeze: auto
+

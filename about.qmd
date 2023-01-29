@@ -1,0 +1,30 @@
+---
+title: "About Andrew Fergusson"
+about:
+  template: trestles
+  image: _assets/andrew_running.jpeg
+  links:
+    - icon: github
+      text: Github
+      href: https://github.com
+    - icon: mastodon
+      text: Mastodon
+      href: https://dataare.cool/@waf
+---
+
+Andrew Fergusson is a Lead Data Scientist at Office for National Statistics. When he's not banging on about metadata making everyone's life easier, he's probably banging the pavement in preparation for the next marathon.
+
+## Education
+
+Open Unversity, Milton Keynes
+Computing & IT (Computing Science) with Statistics | October 2015 - September 2021
+
+## Experience
+
+Lead Data Scientist | Office for National Statistics | May 2022 - Present
+
+Senior Data Engineer | Office for National Statistics | November 2020 - April 2022
+
+Data Engineer | One Manchester | July 2019 - October 2020
+
+Lead Developer (Data Engineering) | BNY Mellon | December 2013 - June 2019

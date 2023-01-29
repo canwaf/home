@@ -1,0 +1,58 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "andrew fergusson’s roughdata",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Post With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nJan 29, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome to roughdata!\n\n\n\n\n\n\n\nmeta\n\n\n\n\n\n\n\n\n\n\n\nJan 28, 2023\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nJan 26, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "blog/posts/post-with-code/index.html",
+    "href": "blog/posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "This is a post with executable code."
+  },
+  {
+    "objectID": "blog/posts/2023-01-29-welcome-to-rougdata.html",
+    "href": "blog/posts/2023-01-29-welcome-to-rougdata.html",
+    "title": "Welcome to roughdata!",
+    "section": "",
+    "text": "Turns out, I do need a blog, and it also turns out having backups of my blog posts is a good idea. So here we are.\nThat said, this particular recreation of this blog will be done using the Wayback machine because I actually can’t find my old svbtle hosted blog backups. Glad I was worthy for the archiving, Internet Archive\nI’ll post the old stuff as I determine its suitability for the Internet."
+  },
+  {
+    "objectID": "blog/posts/welcome/index.html",
+    "href": "blog/posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Andrew Fergusson",
+    "section": "",
+    "text": "Andrew Fergusson is a Lead Data Scientist at Office for National Statistics. When he’s not banging on about metadata making everyone’s life easier, he’s probably banging the pavement in preparation for the next marathon."
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "About Andrew Fergusson",
+    "section": "Education",
+    "text": "Education\nOpen Unversity, Milton Keynes Computing & IT (Computing Science) with Statistics | October 2015 - September 2021"
+  },
+  {
+    "objectID": "about.html#experience",
+    "href": "about.html#experience",
+    "title": "About Andrew Fergusson",
+    "section": "Experience",
+    "text": "Experience\nLead Data Scientist | Office for National Statistics | May 2022 - Present\nSenior Data Engineer | Office for National Statistics | November 2020 - April 2022\nData Engineer | One Manchester | July 2019 - October 2020\nLead Developer (Data Engineering) | BNY Mellon | December 2013 - June 2019"
+  }
+]

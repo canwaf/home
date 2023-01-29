@@ -2,9 +2,15 @@
 title: "andrew fergusson's roughdata"
 ---
 
+roughdata is a reality experienced by data anlysts, scientists, and engineers. To make our work work, we make assumptions before we get to the fun stuff. We are not perfect, and we're not always right. But all analysis is iterative. We can always go back and fix things to make things better.
+
+We can also have fun with other people's models. I haven't done much of creating generative AI models; however I've had a lot of fun with StableDiffusion and ChatGPT.
+
+### ChatGPT by OpenAI fun
+
 I don't have a cat, but I certainly enjoy throwing pet related questions at ChatGPT. This is a sample of level of nonsense I'm willing to put out into the world. Not quite proud of this, but certainly it's an index placeholder for the blog and about me pages.
 
-### ChatGPT provides a product brief for luxury catnip tea
+#### ChatGPT provides a product brief for luxury catnip tea
 
 `andrew fergusson:`
 
@@ -23,7 +29,7 @@ I don't have a cat, but I certainly enjoy throwing pet related questions at Chat
 > 9. Can be served as a treat or as a complement to their regular meals.
 > 10. Made with high-quality ingredients, ensuring the safety and satisfaction of your cat.
 
-### ChatGPT delivers a convocation speech for the business school
+#### ChatGPT delivers a convocation speech for the business school
 
 Oddly, this one provided more personality than the presiding dean. But bless the University of Sheffield for plouging through 200 awards in an hour. Certainly faster, though the content wasn't as interesting, as my experience with Open Unversity and now Dr. Ronan Keating on 16 May 2022.
 
@@ -48,3 +54,5 @@ Oddly, this one provided more personality than the presiding dean. But bless the
 > Lastly, I would like to say that I am incredibly proud to be the chancellor of the University of Sheffield and I am honored to have had the opportunity to be a part of your journey. You are a testament to the excellence and potential of this institution, and I have no doubt that you will go on to do great things.
 > 
 > Congratulations again on this incredible achievement, and I wish you all the best as you embark on the next chapter of your lives. Thank you.
+
+<a rel="me" href="https://dataare.cool/@Waf">Mastodon</a>

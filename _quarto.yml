@@ -1,6 +1,7 @@
 project:
   type: website
   output-dir: rendered
+  resources: _assets/*
 
 website:
   title: "roughdata"
@@ -15,6 +16,7 @@ website:
   search:
     location: navbar
     type: textbox
+
 
 
 format:

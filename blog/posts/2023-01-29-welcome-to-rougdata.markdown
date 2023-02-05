@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Welcome to roughdata!"
-date:   2023-01-28 13:17:00 +0000
+date:   "2023-01-29"
 categories: meta
 ---
 Turns out, I do need a blog, and it also turns out having backups of my blog posts is a good idea. So here we are.

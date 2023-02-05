@@ -20,7 +20,7 @@ Here's what it looks like with the swipe interface on using the Stryd app on iOS
 
 At timestamp 1:40 my troubles really become apparent where I'm belting out the speed (sub 4 minute kilometres on an incline), but having to fight with the interface. Tapping the down button risks you swiping away the incline options, tapping anywhere risks just jiggling the interface and not registering the tap
 
-I know Stryde has structured incline runs for Treadmills. It's a cool feature, and is something I will try out. But I have no idea what my incline asks are going to be because my trainers just shout a speed range and an incline at me. So I can't use this function to set the incline by way of advancing laps.
+I know Stryd has structured incline runs for Treadmills. It's a cool feature, and is something I will try out. But I have no idea what my incline asks are going to be because my trainers just shout a speed range and an incline at me. So I can't use this function to set the incline by way of advancing laps.
 
 The reason why I need track my incline this way is something you lovely folk know, Stryd can't guess your incline on the treadmill and if I assume flat I leave a lot of effort unrecorded. My power curve has changed dramatically since I've started recording my inclines.
 

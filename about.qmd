@@ -15,7 +15,7 @@ about:
       href: _assets/AndrewFergusson_LeadDataScientist_202301.pdf
 ---
 
-Andrew Fergusson is a Lead Data Scientist at Office for National Statistics. When he's not banging on about metadata making everyone's life easier, he's probably banging the pavement in preparation for the next marathon.
+Andrew Fergusson is a Linked Data Expert and a middling Python engineer. When he's not banging on about metadata making everyone's life easier, he's probably banging the pavement in preparation for the next marathon.
 
 ## Education
 
@@ -23,7 +23,9 @@ BSc (Hons) Computing & IT (Computing Science) with Statistics | Open University 
 
 ## Experience
 
-Lead Data Scientist | Office for National Statistics | May 2022 - Present
+Linked Data Expert Developer | Telespazio | September 2024 - Present
+
+Lead Data Scientist | Office for National Statistics | May 2022 - September 2024
 
 Senior Data Engineer | Office for National Statistics | November 2020 - April 2022
 

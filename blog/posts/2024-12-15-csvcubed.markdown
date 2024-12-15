@@ -1,0 +1,27 @@
+---
+layout: post
+title:  "csvcubed, a personal retrospective"
+date:   "2024-12-15"
+categories: programming, tech
+---
+
+[csvcubed](https://github.com/ONSdigital/csvcubed) is a tool for building CSV-W files. If you're wondering what the hell CSV-W is, it's basically CSV files with extra metadata that provides context and makes them play nice with linked data. It was born out of necessity when I was working on the [ONS's](https://www.ons.gov.uk) Integrated Data Service's Dissemination service. Our end product was [5-Star Linked Data](https://5stardata.info/en/), and we needed a way to convert CSV files into RDF. I joined the project during the tail end of 2020 during lockdown as a data engineer and the pipeline for creating CSV-W was a bit of a mess but born of necessity.
+
+My onboarding at ONS was great - I was quickly indoctrinated into the power of linked data and the associated standards. My actual job though? Unfucking presentational spreadsheets that locked away most of ONS's statistical publications. Who wants to unpivot data just to do analysis? Not me, and honestly not the analysts producing them either - nobody wants to do analysis on pivoted data.
+
+The tool I initially learned for generating CSV-W was [databaker](https://github.com/GSS-Cogs/databaker), which Sensible Code knocked together during a hackathon. It did the job of creating tidy data, but that was about it. Our pipeline was ultimately this Airflow-orchestrated mess: scrape a publication's latest spreadsheet, use databaker to unpivot it, describe the data using something called gss-utils (to which I will not link because CVEs and archived repo related reasons), build a CSV-W, use Swirrl's csv2rdf tool to convert the CSV-W to RDF, and then publish the RDF to the ONS's linked data platform (now defunct but it was called IDS Data Explorer). This was a lot of steps, and the pipeline was brittle. Kicking Airflow was a regular occurance.
+
+
+I'm a bit of a diva, and sometimes divas are good for getting shit done. The first thing I started to change was the unpivoting process. The databaker tool needed to go - it was slow, unpythonic, and didn't provide any transferrable skills. Deadend tools are a horrible career investment, so I switched to [pandas](https://pandas.pydata.org/) and dragged the other data engineers with me. This was a good first step, but the reproducibility was still a mess. It was time to build a tool that standardized the production of CSV-W files.
+
+gssutils was probably my biggest bugbear - while it technically did the job of producing CSV-W files, it was about as transparent as a brick wall. Extending it was a pain in the ass, and adding new predicates to our data was even worse. Since our target was [RDF Cube Vocabulary](https://www.w3.org/TR/vocab-data-cube/), I conspired with a good work-friend (who went by `robons` on github) to build a tool that would actually make sense of this CSV-W building process. We originally called it csvwlib but ultimately named it csvcubed.
+
+Here's the thing about generating linked observational data - it's a massive problem space. The RDF Cube Vocabulary is a solid standard, but when you throw in the requirement for harmonization before publication, it's daunting. RDF Cubes split tabular data into three parts: dimensions (what you slice and dice by), attributes (context for your observations), and the actual observations themselves. In our idealistic world, each dimension needed a code list (basically a [SKOS concept scheme](https://www.w3.org/TR/skos-reference/#schemes)), and ideally, you'd just reuse one that already existed in our service. This meant that in the old way of building a cube, you either had to reconcile definitions between datasets to reuse them, or manually write a new concept scheme as a CSV-W. Fun times.
+
+To write a RDF Cube-bound CSV-W, you had to write at least one other CSV-W, or worse, reconcile concept definitions across multiple datasets. This was a massive headache for my fellow data engineers - we weren't statistical subject matter experts, we were data engineers who just wanted to build pipelines that actually worked and could scale. That's where csvcubed came in.
+
+The idea behind csvcubed was simple: you give it a tidy data CSV, and it figures out the rest. Using keywords in the column headers, it works out the dimensions, attributes, and observations of the cube. It automatically creates code lists and concept schemes for dimensions. Suddenly, building a cube wasn't such a pain in the ass, and the pipeline actually made sense. The tool was a hit - we went from pushing out 1 publication per data engineer per week to smashing out 10 publications per data engineer per week at our peak.
+
+I've moved on since then - these days I'm virtualizing RDF data using [ontop](https://ontop-vkg.org/) in my new gig providing linked data services for DEFRA. But I hope csvcubed keeps being useful for people in the linked data world. I've used it a few times in my new role, so I'm still eating my own dog food.
+
+I'm now not only a diva but fully a linked data partisan. ONS turned me into a true believer, and I'm not looking back. You can claim to do linked data with a black box tool, but let's be real - if you can't see how it works, you can't claim it's FAIR or 5-Star Linked Data.

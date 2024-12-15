@@ -1,7 +1,9 @@
 project:
   type: website
   output-dir: rendered
-  resources: _assets/*
+  resources: 
+    - _assets/*
+    - CNAME
 
 website:
   title: "roughdata"

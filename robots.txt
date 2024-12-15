@@ -1,1 +1,1 @@
-Sitemap: https://canwaf.github.io/home/sitemap.xml
+Sitemap: https://andrewfergusson.ca/sitemap.xml

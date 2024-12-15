@@ -2,7 +2,7 @@
 layout: post
 title:  "csvcubed, a personal retrospective"
 date:   "2024-12-15"
-categories: programming, tech
+categories: [programming, tech, portfolio]
 ---
 
 [csvcubed](https://github.com/ONSdigital/csvcubed) is a tool for building CSV-W files. If you're wondering what the hell CSV-W is, it's basically CSV files with extra metadata that provides context and makes them play nice with linked data. It was born out of necessity when I was working on the [ONS's](https://www.ons.gov.uk) Integrated Data Service's Dissemination service. Our end product was [5-Star Linked Data](https://5stardata.info/en/), and we needed a way to convert CSV files into RDF. I joined the project during the tail end of 2020 during lockdown as a data engineer and the pipeline for creating CSV-W was a bit of a mess but born of necessity.

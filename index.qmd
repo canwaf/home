@@ -1,56 +1,10 @@
 ---
 title: "andrew fergusson's website"
 ---
+Hi, I'm Andrew - a Linked Data Expert who's spent the last decade turning messy data problems into elegant solutions across government and finance. I'm that rare breed who gets genuinely excited about metadata, believes good documentation is worth its weight in gold, and isn't afraid to tell you exactly why your data pipeline needs both. When I'm not evangelizing about linked data or writing Python, you'll find me at Barry's Bootcamp, because apparently, I enjoy bashing keyboards, smashing the treadmill, and throwing weights around - much like I enjoy throwing around strong opinions about data engineering best practices.
 
-roughdata is a reality experienced by data anlysts, scientists, and engineers. To make our work work, we make assumptions before we get to the fun stuff. We are not perfect, and we're not always right. But all analysis is iterative. We can always go back and fix things to make things better.
+There's a lot to be said for a personal website without an all-consuming project. Over the last five years, I've built some cool things, but let me tell you about [csvcubed](blog/posts/2024-12-15-csvcubed.html) - a tool born from the trenches of government data engineering that turned a painful linked data publishing process into something actually manageable. It took us from wrestling with presentational spreadsheets to pumping out 5-Star Linked Data at 10x the speed. If you're into data engineering, linked data, or just enjoy stories about making complex things suck less, this one's for you.
 
-We can also have fun with other people's models. I haven't done much of creating generative AI models; however I've had a lot of fun with StableDiffusion and ChatGPT. I talk about ChatGPT making my life a bit easier on <a rel="me" href="https://dataare.cool/@Waf">Mastodon</a>.
+New projects I want to highlight and other bragging rites coming soon?
 
-### ChatGPT by OpenAI fun
-
-I don't have a cat, but I certainly enjoy throwing pet related questions at ChatGPT. This is a sample of level of nonsense I'm willing to put out into the world. Not quite proud of this, but certainly it's an index placeholder for the blog and about me pages.
-
-#### ChatGPT provides a product brief for luxury catnip tea
-
-`andrew fergusson:`
-
-> Give me a product benefits list for a brand of cold brew catnip tea for cats available as a subscription.
-
-`OpenAI ChatGPT:`
-
-> 1. Contains 100% organic catnip, providing a safe and natural source of stimulation for cats.
-> 2. Cold brewing process preserves the natural oils in the catnip, resulting in a stronger aroma and taste.
-> 3. Available as a subscription service, ensuring a regular supply of fresh tea.
-> 4. Conveniently packaged in single-serving sachets, allowing for easy portion control.
-> 5. Helps to promote healthy digestion and can provide a calming effect.
-> 6. Can aid in providing relief from anxiety and stress.
-> 7. A great way to bond with your cat and provide them with a stimulating and enjoyable activity.
-> 8. Environmentally friendly, packaged with minimal waste.
-> 9. Can be served as a treat or as a complement to their regular meals.
-> 10. Made with high-quality ingredients, ensuring the safety and satisfaction of your cat.
-
-#### ChatGPT delivers a convocation speech for the business school
-
-Oddly, this one provided more personality than the presiding dean. But bless the University of Sheffield for plouging through 200 awards in an hour. Certainly faster, though the content wasn't as interesting, as my experience with Open Unversity and now Dr. Ronan Keating on 16 May 2022.
-
-`andrew fergusson:`
-
-> Write a 5 minute commencement speech to be given by a chancellor of University of Sheffield.
-
-`OpenAI ChatGPT:`
-
-> Ladies and gentlemen, graduates, friends, and family, it is my honor to stand before you today as the chancellor of the University of Sheffield. As we gather to celebrate the accomplishments of our graduates, I want to take a moment to reflect on the journey that has brought us here.
-> 
-> Firstly, I want to congratulate each and every one of you on this incredible achievement. You have worked hard, overcome obstacles, and reached this momentous occasion. You should be incredibly proud of yourselves, and I want to express my deep admiration for your dedication and perseverance.
-> 
-> As you go out into the world, I want to remind you of the importance of continued learning and growth. You may have completed your time at the University of Sheffield, but the true education is only just beginning. The world is constantly changing, and it is up to you to adapt, learn, and grow as individuals.
-> 
-> You will face challenges, and you will make mistakes, but that is the beauty of life. Embrace the unknown, take risks, and most importantly, never stop learning.
-> 
-> Secondly, I would like to remind you of the importance of community and connection. The University of Sheffield has been your home for the past few years, and you have formed connections and relationships that will last a lifetime. The support and camaraderie you have experienced here will be invaluable as you navigate the complexities of the world.
-> 
-> So, my dear graduates, I urge you to keep these connections strong and to seek out new ones. The world is a better place when we work together, and I have no doubt that you will make a positive impact on those around you.
-> 
-> Lastly, I would like to say that I am incredibly proud to be the chancellor of the University of Sheffield and I am honored to have had the opportunity to be a part of your journey. You are a testament to the excellence and potential of this institution, and I have no doubt that you will go on to do great things.
-> 
-> Congratulations again on this incredible achievement, and I wish you all the best as you embark on the next chapter of your lives. Thank you.
+[Follow me on Mastodon](https://dataare.cool/@Waf) to stay in the loop.

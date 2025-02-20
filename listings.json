@@ -2,6 +2,7 @@
   {
     "listing": "/blog/index.html",
     "items": [
+      "/blog/posts/2025-02-20-jsonld-and-prefixes.html",
       "/blog/posts/2024-12-15-csvcubed.html",
       "/blog/posts/stryd-on-treadmill-interface/2023-02-05-stryd-on-a-treadmill.html",
       "/blog/posts/2023-01-29-welcome-to-rougdata.html"

@@ -1,27 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://andrewfergusson.ca/index.html</loc>
-    <lastmod>2024-12-15T15:51:20.595Z</lastmod>
-  </url>
-  <url>
-    <loc>https://andrewfergusson.ca/blog/posts/2024-12-15-csvcubed.html</loc>
-    <lastmod>2024-12-15T15:51:20.567Z</lastmod>
-  </url>
-  <url>
-    <loc>https://andrewfergusson.ca/blog/posts/2023-01-29-welcome-to-rougdata.html</loc>
-    <lastmod>2024-12-15T15:51:20.567Z</lastmod>
-  </url>
-  <url>
     <loc>https://andrewfergusson.ca/blog/index.html</loc>
-    <lastmod>2024-12-15T15:51:20.567Z</lastmod>
+    <lastmod>2025-02-20T11:40:33.674Z</lastmod>
   </url>
   <url>
     <loc>https://andrewfergusson.ca/blog/posts/stryd-on-treadmill-interface/2023-02-05-stryd-on-a-treadmill.html</loc>
-    <lastmod>2024-12-15T15:51:20.567Z</lastmod>
+    <lastmod>2025-02-20T11:40:33.674Z</lastmod>
+  </url>
+  <url>
+    <loc>https://andrewfergusson.ca/blog/posts/2025-02-20-jsonld-and-prefixes.html</loc>
+    <lastmod>2025-02-20T11:40:33.674Z</lastmod>
   </url>
   <url>
     <loc>https://andrewfergusson.ca/about.html</loc>
-    <lastmod>2024-12-15T15:51:20.567Z</lastmod>
+    <lastmod>2025-02-20T11:40:33.674Z</lastmod>
+  </url>
+  <url>
+    <loc>https://andrewfergusson.ca/index.html</loc>
+    <lastmod>2025-02-20T11:40:33.697Z</lastmod>
+  </url>
+  <url>
+    <loc>https://andrewfergusson.ca/blog/posts/2023-01-29-welcome-to-rougdata.html</loc>
+    <lastmod>2025-02-20T11:40:33.674Z</lastmod>
+  </url>
+  <url>
+    <loc>https://andrewfergusson.ca/blog/posts/2024-12-15-csvcubed.html</loc>
+    <lastmod>2025-02-20T11:40:33.674Z</lastmod>
   </url>
 </urlset>

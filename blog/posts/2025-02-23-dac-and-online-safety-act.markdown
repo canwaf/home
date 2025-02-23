@@ -55,15 +55,15 @@ DAC does this. It's a social network. It's a user-to-user service. Moving on.
 
 Ofcom defines a search service as "online service which is, or includes, a search engine. A search engine is a feature which enables users to search more than one website and/or database."
 
-The nature of Mastodon/Fediverse is that it is a search service. It's a federated social network. It's a search service. No stark, it's also a search service; but one that requires people to log in to search the Fediverse.
+The nature of Mastodon/Fediverse is that it is a search service. It's a federated social network. It's a search service; but also one that requires people to log in to search the Fediverse.
 
 ## Does your online service publish or display pornographic content?
 
-DAC does not have any alts (aka pornographic focused accounts) on the service; however some of DAC's adult users have subscribed to the feeds of users who do post pornographic content. So we don't publish it, but we do display it.
+DAC does not have any alts (aka pornographic focused accounts) on the service; however some of DAC's adult users have subscribed to the feeds of users elsewhere in the Fediverse who do post pornographic content. So we don't publish it, but we do display it to logged-in users.
 
 ## Exemptions?
 
-DAC isn't exempt from the Online Safety Act in the form of their carve outs. __Though there's a small amount of snark from me because it exempts UK Parliament's websites from the Online Safety, because the UK Parliament's petition website is a user-to-user service.__ Sauce for the goose? Natch.
+DAC isn't exempt from the Online Safety Act in the form of their carve outs. __Though there's a small amount of snark from me because it exempts UK Parliament's websites from the Online Safety Act. The UK Parliament's petition website clearly would otherwise meet the threshold of a user-to-user service with UK targeting, and UK users in the millions.__ Sauce for the goose? Natch.
 
 Anywho...
 

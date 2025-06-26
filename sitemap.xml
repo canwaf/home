@@ -1,35 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://andrewfergusson.ca/blog/index.html</loc>
-    <lastmod>2025-02-23T20:39:48.818Z</lastmod>
-  </url>
-  <url>
-    <loc>https://andrewfergusson.ca/blog/posts/stryd-on-treadmill-interface/2023-02-05-stryd-on-a-treadmill.html</loc>
-    <lastmod>2025-02-23T20:39:48.818Z</lastmod>
-  </url>
-  <url>
-    <loc>https://andrewfergusson.ca/blog/posts/2025-02-20-jsonld-and-prefixes.html</loc>
-    <lastmod>2025-02-23T20:39:48.818Z</lastmod>
-  </url>
-  <url>
-    <loc>https://andrewfergusson.ca/index.html</loc>
-    <lastmod>2025-02-23T20:39:48.841Z</lastmod>
-  </url>
-  <url>
     <loc>https://andrewfergusson.ca/about.html</loc>
-    <lastmod>2025-02-23T20:39:48.817Z</lastmod>
+    <lastmod>2025-06-26T20:02:57.603Z</lastmod>
   </url>
   <url>
-    <loc>https://andrewfergusson.ca/blog/posts/2025-02-23-dac-and-online-safety-act.html</loc>
-    <lastmod>2025-02-23T20:39:48.818Z</lastmod>
-  </url>
-  <url>
-    <loc>https://andrewfergusson.ca/blog/posts/2023-01-29-welcome-to-rougdata.html</loc>
-    <lastmod>2025-02-23T20:39:48.818Z</lastmod>
+    <loc>https://andrewfergusson.ca/blog/index.html</loc>
+    <lastmod>2025-06-26T20:02:57.603Z</lastmod>
   </url>
   <url>
     <loc>https://andrewfergusson.ca/blog/posts/2024-12-15-csvcubed.html</loc>
-    <lastmod>2025-02-23T20:39:48.818Z</lastmod>
+    <lastmod>2025-06-26T20:02:57.603Z</lastmod>
+  </url>
+  <url>
+    <loc>https://andrewfergusson.ca/blog/posts/2025-02-23-dac-and-online-safety-act.html</loc>
+    <lastmod>2025-06-26T20:02:57.603Z</lastmod>
+  </url>
+  <url>
+    <loc>https://andrewfergusson.ca/blog/posts/2025-06-15-running-effort-description.html</loc>
+    <lastmod>2025-06-26T20:02:57.603Z</lastmod>
+  </url>
+  <url>
+    <loc>https://andrewfergusson.ca/blog/posts/2025-02-20-jsonld-and-prefixes.html</loc>
+    <lastmod>2025-06-26T20:02:57.603Z</lastmod>
+  </url>
+  <url>
+    <loc>https://andrewfergusson.ca/blog/posts/stryd-on-treadmill-interface/2023-02-05-stryd-on-a-treadmill.html</loc>
+    <lastmod>2025-06-26T20:02:57.603Z</lastmod>
+  </url>
+  <url>
+    <loc>https://andrewfergusson.ca/blog/posts/2023-01-29-welcome-to-rougdata.html</loc>
+    <lastmod>2025-06-26T20:02:57.603Z</lastmod>
+  </url>
+  <url>
+    <loc>https://andrewfergusson.ca/index.html</loc>
+    <lastmod>2025-06-26T20:02:57.626Z</lastmod>
   </url>
 </urlset>

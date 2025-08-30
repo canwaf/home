@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-02-20">
+<meta name="dcterms.date" content="2025-08-30">
 
-<title>A small gotchya around jsonld 1.0, 1.1, and gen-delims from RFC3986 – roughdata</title>
+<title>The Art of Semantic Procrastination: Why I Use Blank Nodes for Concepts That Aren’t Mine – roughdata</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -147,7 +147,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">A small gotchya around jsonld 1.0, 1.1, and gen-delims from RFC3986</h1>
+      <h1 class="title">The Art of Semantic Procrastination: Why I Use Blank Nodes for Concepts That Aren’t Mine</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">programming</div>
                 <div class="quarto-category">tech</div>
@@ -155,6 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
                 <div class="quarto-category">linked-data</div>
                 <div class="quarto-category">rdf</div>
                 <div class="quarto-category">json-ld</div>
+                <div class="quarto-category">wqa-api</div>
               </div>
                   </div>
   </div>
@@ -166,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">February 20, 2025</p>
+        <p class="date">August 30, 2025</p>
       </div>
     </div>
     
@@ -177,8 +178,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#procrastination-by-way-of-blank-nodes" id="toc-procrastination-by-way-of-blank-nodes" class="nav-link active" data-scroll-target="#procrastination-by-way-of-blank-nodes">Procrastination by way of blank nodes</a></li>
+  <li><a href="#when-the-kettles-come-out-reconciliation-without-regret" id="toc-when-the-kettles-come-out-reconciliation-without-regret" class="nav-link" data-scroll-target="#when-the-kettles-come-out-reconciliation-without-regret">When the kettles come out: reconciliation without regret</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -187,41 +195,131 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>I’m working on an exciting project which is the implementation of the <a href="https://w3c.github.io/sdw-sosa-ssn/ssn/">SOSA standard</a>, and as part of the project I wanted to use the <a href="http://environmentontology.org/">envo ontology</a> to provide context to the data contained therein.</p>
-<p>As part of the development process I manually write RDF/Turtle to be sure I have the relationships correct for a single vertical component, and then I write a corresponding response in JSON-LD. From there I check for isomorphism of the two graphs to ensure that the JSON-LD is correct. The main reason why I manually serialize the JSON-LD is that the automatic conversion to JSON-LD is hideous; a well designed JSON-LD response could be indistinguishable from a resful JSON API response, but with the additional inclusions of various fields like <code>@context</code> and <code>@id</code> which can be ignored by users who would rather parse the data as a JSON object.</p>
-<p>Now that I’ve set up the scene, let’s get to the gotchya. I was writing a JSON-LD response for a vertical component, and I wanted to include the <code>envo</code> ontology as part of the context. I had the following JSON-LD:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"@context"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"envo"</span><span class="fu">:</span> <span class="st">"http://purl.obolibrary.org/obo/ENVO_"</span><span class="fu">,</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"skos"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"@id"</span><span class="fu">:</span> <span class="st">"http://example.com/concept1"</span><span class="fu">,</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"skos:prefLabel"</span><span class="fu">:</span> <span class="st">"RIVER / RUNNING SURFACE WATER"</span><span class="fu">,</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"skos:closeMatch"</span><span class="fu">:</span> <span class="st">"envo:00000022"</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Which unfortunately serilaized to</p>
-<pre class="n3"><code>&lt;http://example.com/concept1&gt; &lt;http://www.w3.org/2004/02/skos/core#closeMatch&gt; "envo:00000022" .
-&lt;http://example.com/concept1&gt; &lt;http://www.w3.org/2004/02/skos/core#prefLabel&gt; "RIVER / RUNNING SURFACE WATER" .</code></pre>
-<p>As you can see we don’t have the IRI of the <code>envo</code> object we expected (which would be <code>http://purl.obolibrary.org/obo/ENVO_00000022</code>).</p>
-<p>Turns out that JSON-LD 1.0 doesn’t support ending what in TTL is called <a href="https://www.w3.org/TR/turtle/#prefixed-name"><code>@prefix</code></a> when it doesn’t end in a gen-delim character as defined in <a href="https://datatracker.ietf.org/doc/html/rfc3986">RFC3986</a>. tl;dr <code>_</code>s are out in prefixes with JSON-LD 1.0; however…</p>
-<p>JSON-LD 1.1 adopts the more permissive approach of IRI creation like RDF/TTL with a bit more in the context. By putting the prefix in an object’s <code>@id</code>, and setting a <code>@prefix</code> keyword to <code>true</code>, I finally got the result I wanted.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"@context"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"@version"</span><span class="fu">:</span> <span class="fl">1.1</span><span class="fu">,</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"envo"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"@id"</span><span class="fu">:</span> <span class="st">"http://purl.obolibrary.org/obo/ENVO_"</span><span class="fu">,</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"@prefix"</span><span class="fu">:</span> <span class="kw">true</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"skos"</span><span class="fu">:</span> <span class="st">"http://www.w3.org/2004/02/skos/core#"</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"@id"</span><span class="fu">:</span> <span class="st">"http://example.com/concept1"</span><span class="fu">,</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"skos:prefLabel"</span><span class="fu">:</span> <span class="st">"RIVER / RUNNING SURFACE WATER"</span><span class="fu">,</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"skos:closeMatch"</span><span class="fu">:</span> <span class="st">"envo:00000022"</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>I may be breaking some backwards compatibility here; for example neither the <a href="https://json-ld.org/playground/">JSON-LD Playground</a> nor the <a href="https://www.easyrdf.org/converter">EasyRDF Converter</a> serialize it differently to the first example in n3; however the likes of rdflib 7.1.3 does.</p>
-<p>For me the JSON-LD “shape” is more important than giving supporting JSON-LD 1.0; and I can’t change the <code>envo</code> prefix. Necessity breeds breaking backwards compatibility.</p>
+<p>In the linked data world, there is always a temptation to boil the ocean. When building out a new API or even just a new dataset, there are so many concepts (<code>SKOS:Concept</code> and otherwise) that are undefined and uncoined which provide human context and you feel the pressure to define it in your RDF - at the risk of taking on too much and straying outside of your authority. I’ve faced that in the past while building out a linked data service at Office for National Statistics, and having been burnt by the numerous kettles we had going to define everything semantically. I’ve been determined to not make that mistake again.</p>
+<p>The new API I’ve been developing for DEFRA is a <a href="https://www.hydra-cg.com">Hydra</a>/<a href="https://w3c.github.io/sdw-sosa-ssn/ssn/">SOSA</a> vocabulary based RESTful, content negotiated API for observational water quality data in England. The architecture of the service is FastAPI+PostGIS with a Next.JS frontend: the API doesn’t know anything about RDF; however it responds via JSON-LD by default with the JSON written in a way that people not familiar with RDF would appreciate.</p>
+<p>The main payload of the API is sampling points (<code>sosa:FeatureOfInterest</code>) have samples &amp; samplings (<code>sosa:Sample</code>, <code>sosa:Sampling</code>), which in turn have observations (<code>sosa:Observation</code>). Each of these levels have domain-specific types, classifications, and annotations which are necessary for the interpretation and discovery of these data; however no authoritative, public resource currently exists of these concepts.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/plaged_by_concepts.png" class="img-fluid figure-img"></p>
+<figcaption>A felted shrew carrying a raspberry and a knife, wearing an embroidered habbit; against the pink pastel backdrop the meme text “i am plagued by concepts” is written in black sanserif font</figcaption>
+</figure>
+</div>
+<p>As someone who lives FAIR, linked data, but knows most consumers of data neither understand nor care about it, what should I do? The answer isn’t to avoid these concepts - it’s to represent them responsibly until someone with actual authority shows up.</p>
+<section id="procrastination-by-way-of-blank-nodes" class="level2">
+<h2 class="anchored" data-anchor-id="procrastination-by-way-of-blank-nodes">Procrastination by way of blank nodes</h2>
+<p>My solution is deterministic blank nodes. Instead of coining URIs for concepts I don’t own, I generate consistent blank nodes that can be reconciled later when authoritative sources emerge. This keeps my API stable while avoiding coining URIs I may eventually regret. Let me explain.</p>
+<p>Previously I would have attempted to coin URIs for all my concepts, either at the dataset or higher level scope. For example, capturing the concept of running surface water from a river. In the source data for the API I have a table with a key and a label, the key acts as a notation.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">You</span> <span class="er">have</span> <span class="er">no</span> <span class="er">authority</span> <span class="er">here,</span> <span class="er">Jackie</span> <span class="er">Weaver</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"@id"</span><span class="fu">:</span> <span class="st">"http://environment.data.gov.uk/id/sample-material/2AZZ"</span><span class="fu">,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"@type"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"skos:Concept"</span><span class="ot">,</span> <span class="st">"sosa:FeatureOfInterest"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"skos:prefLabel"</span><span class="fu">:</span> <span class="st">"RIVER / RUNNING SURFACE WATER"</span><span class="fu">,</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"skos:notation"</span><span class="fu">:</span> <span class="st">"2AZZ"</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The issue is I currently don’t have responsibility of the concept scheme for sample materials, and it’s also not online. I know all the values, and I have a copy of it to make the service work but it’s not within the scope of delivery for the water quality API. So instead of speaking with authority I’ve shifted to getting it down in code first to serve it via the API. How about as a blank node?</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Procrastinating</span> <span class="er">via</span> <span class="er">blank</span> <span class="er">nodes</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"@id"</span><span class="fu">:</span> <span class="st">"_:sampleMaterial-2AZZ"</span><span class="fu">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"@type"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"skos:Concept"</span><span class="ot">,</span> <span class="st">"sosa:FeatureOfInterest"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"skos:prefLabel"</span><span class="fu">:</span> <span class="st">"RIVER / RUNNING SURFACE WATER"</span><span class="fu">,</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"skos:notation"</span><span class="fu">:</span> <span class="st">"2AZZ"</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The key here isn’t just using any blank node - it’s using a <strong>deterministic</strong> blank node identifier. By concatenating the concept scheme name with the notation (<code>_:sampleMaterial-2AZZ</code>), I ensure that every time this concept appears in my API responses, it gets the same blank node identifier.</p>
+<blockquote class="blockquote">
+<p><strong>Note</strong>: This isn’t standard RDF blank node syntax - it’s my deterministic generation pattern from my source data. When serialized to actual RDF formats, these become proper blank nodes, but the consistent string ensures they all resolve to the same node across serializations. This isn’t just semantic pedantry - it has real practical benefits.</p>
+</blockquote>
+<p>When someone downloads multiple API responses and converts them to Turtle or N-Triples, all instances of <code>_:sampleMaterial-2AZZ</code> will be recognized as the same entity. Without this deterministic approach, you’d end up with multiple disconnected blank nodes for what should be the same concept, creating an unforgivable mess.</p>
+<p>Here’s what this looks like in practice - a real API response converted to Turtle:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-sSL</span> <span class="at">--fail</span> <span class="st">'http://localhost:8000/sampling-point/53130070/sample?skip=0&amp;limit=3&amp;sampleMaterialType=2AZZ&amp;complianceOnly=false'</span> <span class="kw">|</span> <span class="ex">rdfpipe</span> <span class="at">-i</span> json-ld <span class="at">-o</span> ttl <span class="at">-</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="ttl"><code>@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+@prefix hydra: &lt;http://www.w3.org/ns/hydra/core#&gt; .
+@prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt; .
+@prefix sosa1: &lt;http://www.w3.org/ns/sosa#&gt; .
+@prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt; .
+
+&lt;http://localhost:8000/sampling-point/53130070/sampling/1506412&gt; a sosa1:Sampling ;
+    dcterms:type _:samplingPurpose-CA ;
+    sosa1:hasFeatureOfInterest &lt;http://localhost:8000/sampling-point/53130070&gt; ;
+    sosa1:hasResult &lt;http://localhost:8000/sampling-point/53130070/sample/1506412&gt; ;
+    sosa1:resultTime "2001-08-08"^^xsd:date ;
+    sosa1:startTime "2000-08-18T12:20:00"^^xsd:dateTime .
+
+&lt;http://localhost:8000/sampling-point/53130070/sampling/1510110&gt; a sosa1:Sampling ;
+    dcterms:type _:samplingPurpose-CA ;
+    sosa1:hasFeatureOfInterest &lt;http://localhost:8000/sampling-point/53130070&gt; ;
+    sosa1:hasResult &lt;http://localhost:8000/sampling-point/53130070/sample/1510110&gt; ;
+    sosa1:resultTime "2000-10-05"^^xsd:date ;
+    sosa1:startTime "2000-09-20T12:00:00"^^xsd:dateTime .
+
+&lt;http://localhost:8000/sampling-point/53130070/sampling/2303318&gt; a sosa1:Sampling ;
+    dcterms:type _:samplingPurpose-CA ;
+    sosa1:hasFeatureOfInterest &lt;http://localhost:8000/sampling-point/53130070&gt; ;
+    sosa1:hasResult &lt;http://localhost:8000/sampling-point/53130070/sample/2303318&gt; ;
+    sosa1:resultTime "2001-06-07"^^xsd:date ;
+    sosa1:startTime "2000-11-29T00:01:00"^^xsd:dateTime .
+
+&lt;http://localhost:8000/sampling-point/53130070/sample/1506412&gt; a sosa1:Sample ;
+    sosa1:isResultOf &lt;http://localhost:8000/sampling-point/53130070/sampling/1506412&gt; ;
+    sosa1:isSampleOf _:sampleMaterial-2AZZ,
+        &lt;http://localhost:8000/sampling-point/53130070&gt; .
+
+&lt;http://localhost:8000/sampling-point/53130070/sample/1510110&gt; a sosa1:Sample ;
+    sosa1:isResultOf &lt;http://localhost:8000/sampling-point/53130070/sampling/1510110&gt; ;
+    sosa1:isSampleOf _:sampleMaterial-2AZZ,
+        &lt;http://localhost:8000/sampling-point/53130070&gt; .
+
+&lt;http://localhost:8000/sampling-point/53130070/sample/2303318&gt; a sosa1:Sample ;
+    sosa1:isResultOf &lt;http://localhost:8000/sampling-point/53130070/sampling/2303318&gt; ;
+    sosa1:isSampleOf _:sampleMaterial-2AZZ,
+        &lt;http://localhost:8000/sampling-point/53130070&gt; .
+
+[] a hydra:Collection ;
+    hydra:member &lt;http://localhost:8000/sampling-point/53130070/sample/1506412&gt;,
+        &lt;http://localhost:8000/sampling-point/53130070/sample/1510110&gt;,
+        &lt;http://localhost:8000/sampling-point/53130070/sample/2303318&gt; ;
+    hydra:totalItems 129 ;
+    hydra:view [ hydra:first &lt;http://localhost:8000/sampling-point/53130070/sample?skip=0&amp;limit=3&amp;sampleMaterialType=2AZZ&amp;complianceOnly=false&gt; ;
+            hydra:last &lt;http://localhost:8000/sampling-point/53130070/sample?skip=126&amp;limit=3&amp;sampleMaterialType=2AZZ&amp;complianceOnly=false&gt; ;
+            hydra:next &lt;http://localhost:8000/sampling-point/53130070/sample?skip=3&amp;limit=3&amp;sampleMaterialType=2AZZ&amp;complianceOnly=false&gt; ] .
+
+_:sampleMaterial-2AZZ a skos:Concept,
+        sosa1:FeatureOfInterest ;
+    skos:notation "2AZZ" ;
+    skos:prefLabel "RIVER / RUNNING SURFACE WATER" .
+
+_:samplingPurpose-CA a skos:Concept ;
+    skos:notation "CA" ;
+    skos:prefLabel "COMPLIANCE AUDIT (PERMIT)" .</code></pre>
+<p>Notice how <code>_:sampleMaterial-2AZZ</code> appears once in the graph but is referenced by multiple samples - exactly what we want.</p>
+</section>
+<section id="when-the-kettles-come-out-reconciliation-without-regret" class="level2">
+<h2 class="anchored" data-anchor-id="when-the-kettles-come-out-reconciliation-without-regret">When the kettles come out: reconciliation without regret</h2>
+<p>The beauty of this approach is that when the authoritative concept scheme eventually goes online (and it will, because I’m also building that service), I can simply add reconciliation triples without breaking anything. This is where semantic versioning becomes your friend - adding triples is a patch-level change at most. It neither changes the shape of the API’s JSON, nor previously coined URIs.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Future</span> <span class="er">state</span> <span class="er">-</span> <span class="er">same</span> <span class="er">identifier,</span> <span class="er">now</span> <span class="er">with</span> <span class="er">authority</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"@id"</span><span class="fu">:</span> <span class="st">"_:sampleMaterial-2AZZ"</span><span class="fu">,</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"@type"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"skos:Concept"</span><span class="ot">,</span> <span class="st">"sosa:FeatureOfInterest"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"skos:prefLabel"</span><span class="fu">:</span> <span class="st">"RIVER / RUNNING SURFACE WATER"</span><span class="fu">,</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"skos:notation"</span><span class="fu">:</span> <span class="st">"2AZZ"</span><span class="fu">,</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"skos:exactMatch"</span><span class="fu">:</span> <span class="st">"http://environment.data.gov.uk/def/sample-material/2AZZ"</span><span class="fu">,</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"rdfs:definedBy"</span><span class="fu">:</span> <span class="st">"http://environment.data.gov.uk/def/sample-material/"</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now I can fire up those kettles I avoided earlier. The blank node stays the same, existing API consumers continue to work, but new consumers can follow the <code>skos:exactMatch</code> to the authoritative source. Cool URIs don’t change, and neither will these deterministic blank nodes.</p>
+<p>This approach scales beautifully across different concept schemes. Whether it’s determinands that eventually align with QUDT vocabularies, geographic regions that get proper Ordnance Survey URIs, or measurement units that find their way into authoritative registries - the pattern remains the same. Add the reconciliation triples when you have them, leave the blank nodes as stable anchors within the service.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">And</span> <span class="er">it</span> <span class="er">even</span> <span class="er">supports</span> <span class="er">multiple</span> <span class="er">reconciliation</span> <span class="er">targets</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"@id"</span><span class="fu">:</span> <span class="st">"_:sampleMaterial-2AZZ"</span><span class="fu">,</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"@type"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"skos:Concept"</span><span class="ot">,</span> <span class="st">"sosa:FeatureOfInterest"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"skos:prefLabel"</span><span class="fu">:</span> <span class="st">"RIVER / RUNNING SURFACE WATER"</span><span class="fu">,</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"skos:notation"</span><span class="fu">:</span> <span class="st">"2AZZ"</span><span class="fu">,</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"skos:exactMatch"</span><span class="fu">:</span> <span class="st">"http://environment.data.gov.uk/def/sample-material/2AZZ"</span><span class="fu">,</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"rdfs:definedBy"</span><span class="fu">:</span> <span class="st">"http://environment.data.gov.uk/def/sample-material/"</span><span class="fu">,</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"skos:closeMatch"</span><span class="fu">:</span> <span class="st">"http://purl.obolibrary.org/obo/ENVO_00000022"</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In a perfect world, every concept would have an authoritative URI from day one. In the real world, sometimes the most responsible thing you can do is admit you’re not the authority - yet. Deterministic blank nodes let you build useful services today while keeping the door open for proper reconciliation tomorrow. It’s procrastination with a purpose.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

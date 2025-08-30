@@ -1,43 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://andrewfergusson.ca/about.html</loc>
-    <lastmod>2025-06-26T20:13:14.018Z</lastmod>
-  </url>
-  <url>
     <loc>https://andrewfergusson.ca/blog/index.html</loc>
-    <lastmod>2025-06-26T20:13:14.018Z</lastmod>
+    <lastmod>2025-08-30T13:01:14.624Z</lastmod>
   </url>
   <url>
     <loc>https://andrewfergusson.ca/blog/posts/2024-12-15-csvcubed.html</loc>
-    <lastmod>2025-06-26T20:13:14.018Z</lastmod>
-  </url>
-  <url>
-    <loc>https://andrewfergusson.ca/blog/posts/2025-02-23-dac-and-online-safety-act.html</loc>
-    <lastmod>2025-06-26T20:13:14.018Z</lastmod>
-  </url>
-  <url>
-    <loc>https://andrewfergusson.ca/blog/posts/2025-02-20-jsonld-and-prefixes.html</loc>
-    <lastmod>2025-06-26T20:13:14.018Z</lastmod>
-  </url>
-  <url>
-    <loc>https://andrewfergusson.ca/blog/posts/2025-06-15-running-effort-description.html</loc>
-    <lastmod>2025-06-26T20:13:14.018Z</lastmod>
-  </url>
-  <url>
-    <loc>https://andrewfergusson.ca/blog/posts/2025-06-26-postgres-is-the-best-triplestore.html</loc>
-    <lastmod>2025-06-26T20:13:14.018Z</lastmod>
+    <lastmod>2025-08-30T13:01:14.624Z</lastmod>
   </url>
   <url>
     <loc>https://andrewfergusson.ca/blog/posts/stryd-on-treadmill-interface/2023-02-05-stryd-on-a-treadmill.html</loc>
-    <lastmod>2025-06-26T20:13:14.018Z</lastmod>
+    <lastmod>2025-08-30T13:01:14.625Z</lastmod>
   </url>
   <url>
     <loc>https://andrewfergusson.ca/blog/posts/2023-01-29-welcome-to-rougdata.html</loc>
-    <lastmod>2025-06-26T20:13:14.018Z</lastmod>
+    <lastmod>2025-08-30T13:01:14.624Z</lastmod>
+  </url>
+  <url>
+    <loc>https://andrewfergusson.ca/blog/posts/2025-06-15-running-effort-description.html</loc>
+    <lastmod>2025-08-30T13:01:14.624Z</lastmod>
+  </url>
+  <url>
+    <loc>https://andrewfergusson.ca/about.html</loc>
+    <lastmod>2025-08-30T13:01:14.623Z</lastmod>
   </url>
   <url>
     <loc>https://andrewfergusson.ca/index.html</loc>
-    <lastmod>2025-06-26T20:13:14.041Z</lastmod>
+    <lastmod>2025-08-30T13:01:14.647Z</lastmod>
+  </url>
+  <url>
+    <loc>https://andrewfergusson.ca/blog/posts/2025-02-20-jsonld-and-prefixes.html</loc>
+    <lastmod>2025-08-30T13:01:14.624Z</lastmod>
+  </url>
+  <url>
+    <loc>https://andrewfergusson.ca/blog/posts/2025-08-30-cool-uris-dont-change.html</loc>
+    <lastmod>2025-08-30T13:01:14.625Z</lastmod>
+  </url>
+  <url>
+    <loc>https://andrewfergusson.ca/blog/posts/2025-02-23-dac-and-online-safety-act.html</loc>
+    <lastmod>2025-08-30T13:01:14.624Z</lastmod>
+  </url>
+  <url>
+    <loc>https://andrewfergusson.ca/blog/posts/2025-06-26-postgres-is-the-best-triplestore.html</loc>
+    <lastmod>2025-08-30T13:01:14.624Z</lastmod>
   </url>
 </urlset>

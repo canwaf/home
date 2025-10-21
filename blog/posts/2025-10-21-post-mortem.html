@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-06-15">
+<meta name="dcterms.date" content="2025-10-21">
 
-<title>My own verison of Rating of Perceived Effort – roughdata</title>
+<title>POST Mortem: How Azure Application Gateways’s Missing 308 Killed Our Linked Data API – roughdata</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -115,12 +150,18 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">My own verison of Rating of Perceived Effort</h1>
+      <h1 class="title">POST Mortem: How Azure Application Gateways’s Missing 308 Killed Our Linked Data API</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">running</div>
-                <div class="quarto-category">coaching</div>
-                <div class="quarto-category">sports</div>
-                <div class="quarto-category">fitness</div>
+                <div class="quarto-category">programming</div>
+                <div class="quarto-category">tech</div>
+                <div class="quarto-category">w3c</div>
+                <div class="quarto-category">linked-data</div>
+                <div class="quarto-category">restful</div>
+                <div class="quarto-category">http</div>
+                <div class="quarto-category">wqa-api</div>
+                <div class="quarto-category">microsoft</div>
+                <div class="quarto-category">azure</div>
+                <div class="quarto-category">application-gateway</div>
               </div>
                   </div>
   </div>
@@ -132,7 +173,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">June 15, 2025</p>
+        <p class="date">October 21, 2025</p>
       </div>
     </div>
     
@@ -143,8 +184,18 @@ ul.task-list li input[type="checkbox"] {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-http-redirect-status-code-landscape" id="toc-the-http-redirect-status-code-landscape" class="nav-link active" data-scroll-target="#the-http-redirect-status-code-landscape">The HTTP Redirect Status Code Landscape</a></li>
+  <li><a href="#link-data-apis-need-308" id="toc-link-data-apis-need-308" class="nav-link" data-scroll-target="#link-data-apis-need-308">Link Data APIs need 308</a></li>
+  <li><a href="#the-azure-application-gateway-gap" id="toc-the-azure-application-gateway-gap" class="nav-link" data-scroll-target="#the-azure-application-gateway-gap">The Azure Application Gateway Gap</a></li>
+  <li><a href="#real-world-impact-client-behaviour-broken" id="toc-real-world-impact-client-behaviour-broken" class="nav-link" data-scroll-target="#real-world-impact-client-behaviour-broken">Real-World Impact: Client Behaviour Broken</a></li>
+  <li><a href="#microsoft-fix-your-shit" id="toc-microsoft-fix-your-shit" class="nav-link" data-scroll-target="#microsoft-fix-your-shit">Microsoft: Fix Your Shit</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -153,37 +204,66 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>Today a friend I’m coaching made a comment about how a run of theirs “Felt good. Maybe a bit too fast for an easy run but still below tempo”. I had to remind him that an easy run is where you feel good about it.</p>
-<p>Offhadedly I invented a scale of how I want him to feel after various types of runs:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: center;">Run type</th>
-<th style="text-align: left;">The feeling I hope to inspire</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">Easy</td>
-<td style="text-align: left;">Felt good, want to bring these vibes with me</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Tempo</td>
-<td style="text-align: left;">Absolutely knackered, I will collapse after I stretch</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">Efforts</td>
-<td style="text-align: left;">I am in agony, and I want other people to feel this pain</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Long</td>
-<td style="text-align: left;">I want to end it all so this will stop</td>
-</tr>
-</tbody>
-</table>
-<p>Yeah, it’s glib, but if you’re walking away from an effort session and your cardiovascular system isn’t crying out for revenge you’ve failed.</p>
+<p>In the Linked Data world, cool urls don’t change. That means in the RDF world you’re coining URIs that should be resolvable, and you pick the easiest one. Most people in the linked data world use <code>http://</code> when coining URIs, even though today’s modern internet lives on <code>https://</code> with upgrades handled by the service’s web stack.</p>
+<p>The Water Quality service launching on the environment.data.gov.uk portal has a RESTful, Hydra API, and it supports a combination of <code>GET</code> and <code>POST</code> methods to retrieve data. The most useful endpoints living at <code>/data</code> are <code>POST</code>, as they can receive GeoJSON bounding boxes to query both geographic and observation data, though some uses don’t require a body.</p>
+<p>In our testing we discovered that Python clients break when navigating the pagination of our service, but JavaScript works. WTF?</p>
+<section id="the-http-redirect-status-code-landscape" class="level2">
+<h2 class="anchored" data-anchor-id="the-http-redirect-status-code-landscape">The HTTP Redirect Status Code Landscape</h2>
+<p>The 300 series of HTTP Status Codes defined in RFC 7231, with 308 added in RFC 7538 help people navigate the internet automatically when resources move, protocols change, and they’re all quite useful.</p>
+<ul>
+<li><strong>301 (Moved Permanently)</strong>: The old guard—allows method changes</li>
+<li><strong>302 (Found)</strong>: Temporary and method-flexible</li>
+<li><strong>303 (See Other)</strong>: Forces GET (useful for POST-Redirect-GET pattern)</li>
+<li><strong>307 (Temporary Redirect)</strong>: Preserves method but temporary semantics</li>
+<li><strong>308 (Permanent Redirect)</strong>: The hero we need—permanent + method preservation</li>
+</ul>
+<p>The issue It’s not a resource <strong>move</strong> (different URI), it’s a protocol <strong>upgrade</strong> (same resource, different scheme).</p>
+</section>
+<section id="link-data-apis-need-308" class="level2">
+<h2 class="anchored" data-anchor-id="link-data-apis-need-308">Link Data APIs need 308</h2>
+<p>Our canonical URIs often use <code>http://</code> scheme as protocol agnostic identifiers; however transport security requires HTTPS. Content negotiation and RDF payloads reference http:// URIs, and we don’t select the protocol on the fly in our responses. Both the link headers and the Hydra pagination links in our endpoint use the same URIs to help people navigate our pagination setup.</p>
+<p>So you see how this is going to go? With <code>POST</code> getting redirected to <code>GET</code> will cause things to fall over when we erroneously get a 301 from Microsoft’s Application Gateway?</p>
+</section>
+<section id="the-azure-application-gateway-gap" class="level2">
+<h2 class="anchored" data-anchor-id="the-azure-application-gateway-gap">The Azure Application Gateway Gap</h2>
+<p>The current available responses for a HTTP to HTTPS upgrade in Azure’s Application Gateway service are 301, 302, 304, and 307. It’s missing the semantically accurate and method-preserving 308. Not only that, we can’t target specific paths or entry points in the service. We are forced to chose between wrong semantics (i.e.&nbsp;temporary redirects) or broken clients (<code>POST</code> gets converted to <code>GET</code>).</p>
+</section>
+<section id="real-world-impact-client-behaviour-broken" class="level2">
+<h2 class="anchored" data-anchor-id="real-world-impact-client-behaviour-broken">Real-World Impact: Client Behaviour Broken</h2>
+<p>Let’s be honest, the problem here is that Python is full of pedants (see: Pydantic), and the interpretation of RFC 7231 by the authors of its <code>requests</code> library have correctly implemented their redirect flag in the <code>post()</code> method. When a 301 redirect is encountered, <code>requests</code> converts the POST to a GET—which our <code>/data</code> endpoint doesn’t support, returning a <strong>405 Method Not Allowed</strong> error.</p>
+<p>What should be a simple for loop navigating the link headers to collect a paginated dataset now requires custom redirect handling. What should be the simple contents of the <code>while next_url:</code> loop.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># What breaks with 301:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.post(next_url, headers<span class="op">=</span>headers, data<span class="op">=</span><span class="st">""</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># requests converts POST → GET on 301 redirect</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Server responds: 405 Method Not Allowed</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Pagination fails immediately</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Becomes the more convoluted:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Manual redirect handling to preserve POST method:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.post(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    next_url, </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    headers<span class="op">=</span>headers, </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    auth<span class="op">=</span>auth, </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span><span class="st">""</span>, </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    allow_redirects<span class="op">=</span><span class="va">False</span>  <span class="co"># Disable automatic redirect</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Handle redirect manually to keep POST</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> response.status_code <span class="kw">in</span> (<span class="dv">301</span>, <span class="dv">302</span>, <span class="dv">307</span>, <span class="dv">308</span>):</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    next_url <span class="op">=</span> response.headers[<span class="st">'Location'</span>]</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">continue</span>  <span class="co"># Re-POST to new URL</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Now I have to build my own redirect handling in Python because Microsoft has the semantics of their response codes wrong. I’m fine with it, but I want people to be able to be able to use our endpoint easily.</p>
+<p>Our front-end developers didn’t experience the same problem, which means that JavaScript’s fetch doesn’t do the same thing. This gives us an inconsistent API experience, and even with documentation being clear what’s going wrong with their code I’m still going to get support tickets that the thing is broken.</p>
+</section>
+<section id="microsoft-fix-your-shit" class="level2">
+<h2 class="anchored" data-anchor-id="microsoft-fix-your-shit">Microsoft: Fix Your Shit</h2>
+<p>Your Application Gateway redirect options aren’t complete. Give us a <code>308</code> code, allow us to be the pedants I want us to be. It would make a massive impact for the semantic web, improve our RESTful APIs, and follow modern HTTP patterns without breaking it for everyone else.</p>
+<p>Standards exist for a reason; it’s not a niche concern, as LLMs and Agentic AI usage becomes more and more common, having modern ways of accessing knowledge graphs and FAIR Data requires getting the semantics right everywhere — including in our HTTP response codes.</p>
+<p><span class="citation" data-cites="Azure">@Azure</span>: gimme the response code 308.</p>
+<hr>
+<p><em><strong>Note</strong>:</em> I have a support request asking for this behaviour. I expect Microsoft to change nothing.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

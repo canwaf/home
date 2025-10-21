@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.34">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -68,14 +68,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../../">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-63ed81e4b7024dfd846e609cdb8e6b0f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-a624822aebd705a72cafe257f9c8af1e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -114,6 +115,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">roughdata</span>
     </a>
@@ -209,28 +212,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="procrastination-by-way-of-blank-nodes">Procrastination by way of blank nodes</h2>
 <p>My solution is deterministic blank nodes. Instead of coining URIs for concepts I don’t own, I generate consistent blank nodes that can be reconciled later when authoritative sources emerge. This keeps my API stable while avoiding coining URIs I may eventually regret. Let me explain.</p>
 <p>Previously I would have attempted to coin URIs for all my concepts, either at the dataset or higher level scope. For example, capturing the concept of running surface water from a river. In the source data for the API I have a table with a key and a label, the key acts as a notation.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">You</span> <span class="er">have</span> <span class="er">no</span> <span class="er">authority</span> <span class="er">here,</span> <span class="er">Jackie</span> <span class="er">Weaver</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">You</span> <span class="er">have</span> <span class="er">no</span> <span class="er">authority</span> <span class="er">here,</span> <span class="er">Jackie</span> <span class="er">Weaver</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"@id"</span><span class="fu">:</span> <span class="st">"http://environment.data.gov.uk/id/sample-material/2AZZ"</span><span class="fu">,</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"@type"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"skos:Concept"</span><span class="ot">,</span> <span class="st">"sosa:FeatureOfInterest"</span><span class="ot">]</span><span class="fu">,</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"skos:prefLabel"</span><span class="fu">:</span> <span class="st">"RIVER / RUNNING SURFACE WATER"</span><span class="fu">,</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"skos:notation"</span><span class="fu">:</span> <span class="st">"2AZZ"</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The issue is I currently don’t have responsibility of the concept scheme for sample materials, and it’s also not online. I know all the values, and I have a copy of it to make the service work but it’s not within the scope of delivery for the water quality API. So instead of speaking with authority I’ve shifted to getting it down in code first to serve it via the API. How about as a blank node?</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Procrastinating</span> <span class="er">via</span> <span class="er">blank</span> <span class="er">nodes</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Procrastinating</span> <span class="er">via</span> <span class="er">blank</span> <span class="er">nodes</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"@id"</span><span class="fu">:</span> <span class="st">"_:sampleMaterial-2AZZ"</span><span class="fu">,</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"@type"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"skos:Concept"</span><span class="ot">,</span> <span class="st">"sosa:FeatureOfInterest"</span><span class="ot">]</span><span class="fu">,</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"skos:prefLabel"</span><span class="fu">:</span> <span class="st">"RIVER / RUNNING SURFACE WATER"</span><span class="fu">,</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"skos:notation"</span><span class="fu">:</span> <span class="st">"2AZZ"</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The key here isn’t just using any blank node - it’s using a <strong>deterministic</strong> blank node identifier. By concatenating the concept scheme name with the notation (<code>_:sampleMaterial-2AZZ</code>), I ensure that every time this concept appears in my API responses, it gets the same blank node identifier.</p>
 <blockquote class="blockquote">
 <p><strong>Note</strong>: This isn’t standard RDF blank node syntax - it’s my deterministic generation pattern from my source data. When serialized to actual RDF formats, these become proper blank nodes, but the consistent string ensures they all resolve to the same node across serializations. This isn’t just semantic pedantry - it has real practical benefits.</p>
 </blockquote>
 <p>When someone downloads multiple API responses and converts them to Turtle or N-Triples, all instances of <code>_:sampleMaterial-2AZZ</code> will be recognized as the same entity. Without this deterministic approach, you’d end up with multiple disconnected blank nodes for what should be the same concept, creating an unforgivable mess.</p>
 <p>Here’s what this looks like in practice - a real API response converted to Turtle:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-sSL</span> <span class="at">--fail</span> <span class="st">'http://localhost:8000/sampling-point/53130070/sample?skip=0&amp;limit=3&amp;sampleMaterialType=2AZZ&amp;complianceOnly=false'</span> <span class="kw">|</span> <span class="ex">rdfpipe</span> <span class="at">-i</span> json-ld <span class="at">-o</span> ttl <span class="at">-</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-sSL</span> <span class="at">--fail</span> <span class="st">'http://localhost:8000/sampling-point/53130070/sample?skip=0&amp;limit=3&amp;sampleMaterialType=2AZZ&amp;complianceOnly=false'</span> <span class="kw">|</span> <span class="ex">rdfpipe</span> <span class="at">-i</span> json-ld <span class="at">-o</span> ttl <span class="at">-</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <pre class="ttl"><code>@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
 @prefix hydra: &lt;http://www.w3.org/ns/hydra/core#&gt; .
 @prefix skos: &lt;http://www.w3.org/2004/02/skos/core#&gt; .
@@ -295,7 +298,7 @@ _:samplingPurpose-CA a skos:Concept ;
 <section id="when-the-kettles-come-out-reconciliation-without-regret" class="level2">
 <h2 class="anchored" data-anchor-id="when-the-kettles-come-out-reconciliation-without-regret">When the kettles come out: reconciliation without regret</h2>
 <p>The beauty of this approach is that when the authoritative concept scheme eventually goes online (and it will, because I’m also building that service), I can simply add reconciliation triples without breaking anything. This is where semantic versioning becomes your friend - adding triples is a patch-level change at most. It neither changes the shape of the API’s JSON, nor previously coined URIs.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Future</span> <span class="er">state</span> <span class="er">-</span> <span class="er">same</span> <span class="er">identifier,</span> <span class="er">now</span> <span class="er">with</span> <span class="er">authority</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">Future</span> <span class="er">state</span> <span class="er">-</span> <span class="er">same</span> <span class="er">identifier,</span> <span class="er">now</span> <span class="er">with</span> <span class="er">authority</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"@id"</span><span class="fu">:</span> <span class="st">"_:sampleMaterial-2AZZ"</span><span class="fu">,</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"@type"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"skos:Concept"</span><span class="ot">,</span> <span class="st">"sosa:FeatureOfInterest"</span><span class="ot">]</span><span class="fu">,</span></span>
@@ -303,10 +306,10 @@ _:samplingPurpose-CA a skos:Concept ;
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"skos:notation"</span><span class="fu">:</span> <span class="st">"2AZZ"</span><span class="fu">,</span></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"skos:exactMatch"</span><span class="fu">:</span> <span class="st">"http://environment.data.gov.uk/def/sample-material/2AZZ"</span><span class="fu">,</span></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"rdfs:definedBy"</span><span class="fu">:</span> <span class="st">"http://environment.data.gov.uk/def/sample-material/"</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Now I can fire up those kettles I avoided earlier. The blank node stays the same, existing API consumers continue to work, but new consumers can follow the <code>skos:exactMatch</code> to the authoritative source. Cool URIs don’t change, and neither will these deterministic blank nodes.</p>
 <p>This approach scales beautifully across different concept schemes. Whether it’s determinands that eventually align with QUDT vocabularies, geographic regions that get proper Ordnance Survey URIs, or measurement units that find their way into authoritative registries - the pattern remains the same. Add the reconciliation triples when you have them, leave the blank nodes as stable anchors within the service.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">And</span> <span class="er">it</span> <span class="er">even</span> <span class="er">supports</span> <span class="er">multiple</span> <span class="er">reconciliation</span> <span class="er">targets</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">And</span> <span class="er">it</span> <span class="er">even</span> <span class="er">supports</span> <span class="er">multiple</span> <span class="er">reconciliation</span> <span class="er">targets</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"@id"</span><span class="fu">:</span> <span class="st">"_:sampleMaterial-2AZZ"</span><span class="fu">,</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"@type"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"skos:Concept"</span><span class="ot">,</span> <span class="st">"sosa:FeatureOfInterest"</span><span class="ot">]</span><span class="fu">,</span></span>
@@ -315,7 +318,7 @@ _:samplingPurpose-CA a skos:Concept ;
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"skos:exactMatch"</span><span class="fu">:</span> <span class="st">"http://environment.data.gov.uk/def/sample-material/2AZZ"</span><span class="fu">,</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"rdfs:definedBy"</span><span class="fu">:</span> <span class="st">"http://environment.data.gov.uk/def/sample-material/"</span><span class="fu">,</span></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"skos:closeMatch"</span><span class="fu">:</span> <span class="st">"http://purl.obolibrary.org/obo/ENVO_00000022"</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>In a perfect world, every concept would have an authoritative URI from day one. In the real world, sometimes the most responsible thing you can do is admit you’re not the authority - yet. Deterministic blank nodes let you build useful services today while keeping the door open for proper reconciliation tomorrow. It’s procrastination with a purpose.</p>
 
 
@@ -373,13 +376,14 @@ _:samplingPurpose-CA a skos:Concept ;
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

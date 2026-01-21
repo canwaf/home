@@ -2,54 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://andrewfergusson.ca/blog/posts/2025-02-23-dac-and-online-safety-act.html</loc>
-    <lastmod>2026-01-10T20:04:11.216Z</lastmod>
+    <lastmod>2026-01-21T09:11:58.919Z</lastmod>
   </url>
   <url>
     <loc>https://andrewfergusson.ca/blog/posts/stryd-on-treadmill-interface/2023-02-05-stryd-on-a-treadmill.html</loc>
-    <lastmod>2026-01-10T20:04:11.217Z</lastmod>
+    <lastmod>2026-01-21T09:11:58.919Z</lastmod>
   </url>
   <url>
     <loc>https://andrewfergusson.ca/blog/posts/2025-10-21-post-mortem.html</loc>
-    <lastmod>2026-01-10T20:04:11.216Z</lastmod>
+    <lastmod>2026-01-21T09:11:58.919Z</lastmod>
   </url>
   <url>
     <loc>https://andrewfergusson.ca/blog/posts/2025-08-30-cool-uris-dont-change.html</loc>
-    <lastmod>2026-01-10T20:04:11.216Z</lastmod>
+    <lastmod>2026-01-21T09:11:58.919Z</lastmod>
   </url>
   <url>
     <loc>https://andrewfergusson.ca/blog/posts/2025-06-26-postgres-is-the-best-triplestore.html</loc>
-    <lastmod>2026-01-10T20:04:11.216Z</lastmod>
-  </url>
-  <url>
-    <loc>https://andrewfergusson.ca/blog/index.html</loc>
-    <lastmod>2026-01-10T20:04:11.216Z</lastmod>
-  </url>
-  <url>
-    <loc>https://andrewfergusson.ca/index.html</loc>
-    <lastmod>2026-01-10T20:04:11.239Z</lastmod>
-  </url>
-  <url>
-    <loc>https://andrewfergusson.ca/about.html</loc>
-    <lastmod>2026-01-10T20:04:11.215Z</lastmod>
+    <lastmod>2026-01-21T09:11:58.919Z</lastmod>
   </url>
   <url>
     <loc>https://andrewfergusson.ca/blog/posts/2025-06-15-running-effort-description.html</loc>
-    <lastmod>2026-01-10T20:04:11.216Z</lastmod>
+    <lastmod>2026-01-21T09:11:58.919Z</lastmod>
+  </url>
+  <url>
+    <loc>https://andrewfergusson.ca/about.html</loc>
+    <lastmod>2026-01-21T09:11:58.917Z</lastmod>
+  </url>
+  <url>
+    <loc>https://andrewfergusson.ca/index.html</loc>
+    <lastmod>2026-01-21T09:11:58.942Z</lastmod>
+  </url>
+  <url>
+    <loc>https://andrewfergusson.ca/blog/index.html</loc>
+    <lastmod>2026-01-21T09:11:58.918Z</lastmod>
+  </url>
+  <url>
+    <loc>https://andrewfergusson.ca/blog/posts/2026-01-21-infinite-algorithm-consequences.html</loc>
+    <lastmod>2026-01-21T09:11:58.919Z</lastmod>
   </url>
   <url>
     <loc>https://andrewfergusson.ca/blog/posts/2025-02-20-jsonld-and-prefixes.html</loc>
-    <lastmod>2026-01-10T20:04:11.216Z</lastmod>
+    <lastmod>2026-01-21T09:11:58.919Z</lastmod>
   </url>
   <url>
     <loc>https://andrewfergusson.ca/blog/posts/2026-01-11-intentionally-ringing-in-the-new-year.html</loc>
-    <lastmod>2026-01-10T20:04:11.216Z</lastmod>
+    <lastmod>2026-01-21T09:11:58.919Z</lastmod>
   </url>
   <url>
     <loc>https://andrewfergusson.ca/blog/posts/2024-12-15-csvcubed.html</loc>
-    <lastmod>2026-01-10T20:04:11.216Z</lastmod>
+    <lastmod>2026-01-21T09:11:58.919Z</lastmod>
   </url>
   <url>
     <loc>https://andrewfergusson.ca/blog/posts/2023-01-29-welcome-to-rougdata.html</loc>
-    <lastmod>2026-01-10T20:04:11.216Z</lastmod>
+    <lastmod>2026-01-21T09:11:58.919Z</lastmod>
   </url>
 </urlset>

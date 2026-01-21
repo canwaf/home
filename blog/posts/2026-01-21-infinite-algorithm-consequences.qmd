@@ -1,0 +1,24 @@
+---
+layout: post
+title:  "Intentionally Ringing in the New Year"
+date:   "2026-01-21"
+categories: [personal, politics, big-tech, regulation, child-safety]
+---
+
+The more I think on the #ukPol push to ban under-16s from social media I think that I’m convinced problem is “the algorithm”.
+
+I had access to porn at a very young age, but it wasn’t foisted upon me (barring the odd goatse link) in a continual scroll situation. When you finished reading your friends’ Geocities updates, or Livejournal reverse chronological feed you were done.
+
+Algorithmic recommendation is editorial, and if social media companies were made accountable for it–would they then stop?
+
+There is a distinct lack of talking about the accountability gap in #ukPol. Amazon selling advertisements to marketplace sellers hawking dangerous/faulty counterfeit goods with no consequences. Influencers boosting their reach hawking damaging grey market tanning nasal spray using TikTok’s built in systems to make a small commission.
+
+Both of these have large companies shrugging about the specific harms they cause as there was no human intervention on their part, so no accountability?
+
+Considering the bullshit spouted in many UK newspapers, somehow #ukPol sees better regulation of their editorial line than big American tech companies. It’s a gap that could quickly be fixed.
+
+And my theory is that they’d abandon the algorithm if the consequences were greater than the profit they gain from it.
+
+And maybe we’d go back to seeing your friend’s posts on Instagram, with a less addictive product. Once you’ve caught up it has nothing left for you to do. So one can put their phone down.
+
+*Originally posted as a [thread](https://dataare.cool/@af/115931998830606452) on my Mastodon [instance](https://dataare.cool/).*

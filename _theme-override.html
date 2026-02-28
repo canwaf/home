@@ -1,0 +1,28 @@
+<script>
+// Sync Quarto theme classes with Bootswatch data-bs-theme attribute
+(function() {
+  function syncTheme() {
+    const isDark = document.body.classList.contains('quarto-dark');
+    document.documentElement.setAttribute('data-bs-theme', isDark ? 'dark' : 'light');
+  }
+  
+  function initThemeSync() {
+    // Set initial theme
+    syncTheme();
+    
+    // Watch for body class changes (when Quarto toggles theme)
+    const observer = new MutationObserver(syncTheme);
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+  }
+  
+  // Wait for DOM to be ready
+  if (document.body) {
+    initThemeSync();
+  } else {
+    document.addEventListener('DOMContentLoaded', initThemeSync);
+  }
+})();
+</script>

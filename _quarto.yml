@@ -26,10 +26,10 @@ format:
     theme:
       light:
         - default
-        - brite.scss
+        - brite_light.scss
       dark:
         - default
-        - brite.scss
+        - brite_dark.scss
     respect-user-color-scheme: true
     toc: true
 

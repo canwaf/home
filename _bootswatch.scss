@@ -10,7 +10,9 @@
 }
 
 [data-bs-theme="light"],
-[data-bs-theme="dark"] {
+[data-bs-theme="dark"],
+body.quarto-light,
+body.quarto-dark {
   --#{$prefix}border-color: #000;
 }
 
@@ -150,7 +152,9 @@
 }
 
 [data-bs-theme="dark"] .btn-link,
-[data-bs-theme="dark"] .btn-link:hover {
+[data-bs-theme="dark"] .btn-link:hover,
+body.quarto-dark .btn-link,
+body.quarto-dark .btn-link:hover {
   color: #fff;
 }
 
@@ -282,7 +286,8 @@ a {
   color: $white;
 }
 
-[data-bs-theme="dark"] {
+[data-bs-theme="dark"],
+body.quarto-dark {
   .nav-tabs,
   .nav-pills {
     .nav-link {
@@ -376,6 +381,7 @@ a {
   background-color: $black;
 }
 
-[data-bs-theme="dark"] .toast-header {
+[data-bs-theme="dark"] .toast-header,
+body.quarto-dark .toast-header {
   --#{$prefix}toast-header-color: #fff;
 }

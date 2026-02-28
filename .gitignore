@@ -1,3 +1,5 @@
 /.quarto/
 /rendered/
 .DS_Store
+
+**/*.quarto_ipynb

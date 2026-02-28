@@ -11,6 +11,7 @@ Hello Councillors,
 I’m writing about a rumoured change to tram service into Salford that will be introduced as a temporary measure; however, the last temporary tram service change to Salford lasted over four years.
 
 I have heard that TfGM is planning to do the following to services into Salford:
+
  - Closing the Etihad to MediaCity line
  - Reducing the Ashton–Eccles service from five an hour (12 minutes) to four an hour (15 minutes)
  - Changing all trams on the remaining Ashton–Eccles line to double

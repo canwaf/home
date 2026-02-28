@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "A Letter to my Councillors: Preventing Rumoured Changes to Tram Service Salford"
-date:   "2026-01-21"
+date:   "2026-02-28"
 categories: [personal, politics, tfgm, salford, transport]
 ---
 **tl;dr: Salford tram service is rumoured to be made worse to support the Trafford line. I wrote to my councillors to ask them to prevent this.**

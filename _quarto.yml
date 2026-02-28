@@ -23,8 +23,14 @@ website:
 
 format:
   html:
-    theme: united
-    css: styles.css
+    theme:
+      light:
+        - default
+        - brite.scss
+      dark:
+        - default
+        - brite.scss
+    respect-user-color-scheme: true
     toc: true
 
 execute:
